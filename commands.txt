@@ -1,4 +1,11 @@
-# conda create -p venv(name of environment folder) python=3.10(version) 👎 for creating the encironment
-# conda activate venv/ 👎for activate the environment
-# pip install -r requirements.txt 👎 for installing all the packages in the requirements.txt file
-# pip install ipykernel 👎 ipykernel for running the notebook/ipynb file in vs code
+🚀----------creating env using conda-------------
+➡️ conda create -p venv(name of environment folder) python=3.10(version) 👎 for creating the encironment
+➡️ conda activate venv/ 👎for activate the environment
+
+🚀-----------creating env in python--------------
+➡️ python -m venv myenv(name of env folder) 👎 creating environment using python
+➡️ myenv\Script\activate 👎 activate the environment
+
+🚀-----------installing dependencies or libraries---------
+➡️ pip install ipykernel 👎 ipykernel for running the notebook/ipynb file in vs code
+➡️ pip install -r requirements.txt 👎 for installing all the packages in the requirements.txt file
