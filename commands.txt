@@ -1,0 +1,4 @@
+# conda create -p venv(name of environment folder) python=3.10(version) 👎 for creating the encironment
+# conda activate venv/ 👎for activate the environment
+# pip install -r requirements.txt 👎 for installing all the packages in the requirements.txt file
+# pip install ipykernel 👎 ipykernel for running the notebook/ipynb file in vs code
