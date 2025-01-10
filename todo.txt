@@ -1,0 +1,4 @@
+# install anaconda
+# create a new environments
+# create requirements.txt files
+# install 'ipykernel' for run the notebook code on vs code 
