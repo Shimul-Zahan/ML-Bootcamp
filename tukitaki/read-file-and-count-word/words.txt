@@ -1,7 +1,1 @@
-Here is the new line one 
-Here is the new line two 
-Learn SQL basics
-Practice recursive queries
-Master SQL joins
-Understand window functions
-Review common interview questions
+Assalamu Alaikum 
