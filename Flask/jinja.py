@@ -1,3 +1,9 @@
+'''
+    {{{ }}}  expression
+    {% %} for conditions and loops
+    {# #} this is for comment
+'''
+
 # imports
 from flask import Flask, render_template, request, flash, redirect, url_for
 '''
@@ -39,6 +45,13 @@ def form():
                 f"<p><strong>Project Link:</strong> <a href='{link}' target='_blank'>{link}</a></p>")
     
     return render_template('form.html')
+
+
+# variable rule
+@app.route('/variable/<int:rule>')
+def variable_rule(rule):
+    if rule:
+        return render_template('show_rule.html', value = rule)
 
 
 # start or entry point of this project
