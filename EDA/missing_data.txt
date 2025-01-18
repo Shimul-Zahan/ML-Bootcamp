@@ -1,0 +1,4 @@
+1. Delete row but it not recommendent cause it reemove a big number of data
+2. Fill with Mean value -> If the data has in normal distribution mode
+3. Fill with Median value -> If the data has right or left outlires in the data set [1,2,4,5 -> 90,100,50]
+4. Fill with Mode -> if the missing data is catagorical
