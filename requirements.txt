@@ -7,3 +7,5 @@ flask
 streamlit
 scipy
 scikit-learn
+plotly
+nbformat
