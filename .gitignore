@@ -1,1 +1,17 @@
-venv
+# Ignore Python virtual environment
+venv/
+
+# Ignore dataset directory
+Data Analysis Projects/data/
+
+# Ignore any CSV files
+*.csv
+
+# Ignore any Excel files
+*.xlsx
+
+# Ignore other potential large data files
+*.json
+*.parquet
+*.hdf5
+*.sql
