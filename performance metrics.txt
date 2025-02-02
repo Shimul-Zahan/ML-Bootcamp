@@ -1,0 +1,8 @@
+### Recall Metrics use for medical models cause it works with positive cause
+
+The recall is the ratio tp / (tp + fn) where tp is the number of true positives and fn the number of false negatives.
+
+
+### For imbalanced dataset we use F1-score Metrics
+### For balanced dataset precision or accuracy metrice is good
+
