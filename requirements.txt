@@ -9,3 +9,6 @@ scipy
 scikit-learn
 plotly
 nbformat
+
+-- pip install graphviz
+-- pip install pydotplus
