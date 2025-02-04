@@ -2,3 +2,11 @@
 🔢 Boosting
 🔢 Base Learner
 🔢 Why we use RF instead of DT???
+
+
+
+🙅‍♀️🙅‍♀️🙅‍♀️Super Important
+
+# Imputing Null values 
+1. Impute Medin value for all numerical null value column cause median value handle outliers
+2. For all categorical features we use Mode

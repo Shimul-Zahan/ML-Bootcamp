@@ -9,6 +9,6 @@ scipy
 scikit-learn
 plotly
 nbformat
-
+kagglehub
 graphviz
 pydotplus
