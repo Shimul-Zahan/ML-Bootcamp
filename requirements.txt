@@ -12,3 +12,4 @@ nbformat
 kagglehub
 graphviz
 pydotplus
+kneed
