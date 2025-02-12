@@ -47,6 +47,7 @@ else:
 
     plt.figure(figsize=(12, 6))
     for i in range(6):
+        # subplot(row, clumns, index of image)
         plt.subplot(2, 3, i+1)
         plt.imshow(images[i], cmap='gray')
         plt.title(titles[i])
