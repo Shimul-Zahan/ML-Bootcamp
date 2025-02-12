@@ -14,3 +14,6 @@ graphviz
 pydotplus
 kneed
 xgboost
+opencv-python
+opencv-python-headless
+
