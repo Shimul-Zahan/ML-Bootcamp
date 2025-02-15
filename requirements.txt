@@ -16,4 +16,5 @@ kneed
 xgboost
 opencv-python
 opencv-python-headless
-
+nltk
+spacy
