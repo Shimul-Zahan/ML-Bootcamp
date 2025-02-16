@@ -18,3 +18,4 @@ opencv-python
 opencv-python-headless
 nltk
 spacy
+tensorflow
