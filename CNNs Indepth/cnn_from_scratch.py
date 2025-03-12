@@ -81,22 +81,22 @@ class SimpleCNN(nn.Module):
         
         # define the layers
         # Layer 1
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=32, kernel_size=3, stride=1, padding=1)
+        self.conv1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, stride=1, padding=1)
         self.relu1 = nn.ReLU()
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
         # Layer 2
-        self.conv2 = nn.Conv2d(in_channels=32, out_channels=164, kernel_size=3, stride=1, padding=1)
+        self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1)
         self.relu2 = nn.ReLU()
         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
         
         # fully connected layer.
         # A fully connected (linear) layer that takes the flattened output of the previous layers (64 * 7 * 7) and maps it to 1000 neurons.
-        self.fc1 = nn.Linear(64 * 7 * 7, 1000)  # flatten the output from layer 2 
+        self.fc1 = nn.Linear(64 * 56 * 56, 1000)  # flatten the output from layer 2 
         # fully connected layer that maps the 1000 neurons to 10 output classes
-        self.fc2 = nn.Linear(1000, 2)
+        self.fc2 = nn.Linear(1000, 1)
         
         
-    def forword(self, x):
+    def forward(self, x):
         # Pass the input through the layers
         x = self.conv1(x)
         x = self.relu1(x)
@@ -107,10 +107,12 @@ class SimpleCNN(nn.Module):
         x = self.pool2(x)
         
         # flatten the layer
-        x = x.view(-1, 64 * 7 * 7)
+        x = x.view(-1, 64 * 56 * 56)
         
         # Pass the flattened tensor through fully connected layers
         x = self.fc1(x)
         x = self.fc2(x)
 
         return x
+    
+# TODO 3: Train the model
