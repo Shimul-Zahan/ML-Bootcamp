@@ -10,44 +10,47 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 # TODO 1 : Image Preprocessing
-# image_path = r'E:\ML-Bootcamp-Practical\CNNs Indepth\resources\download.jpg'
-image_path = r'E:\ML-Bootcamp-Practical\CNNs Indepth\resources\IMG_4117.JPG'
-image = Image.open(image_path)
-print(image, 'here is the image array')
+def image_preprocessing(image_path):
+    # image_path = r'E:\ML-Bootcamp-Practical\CNNs Indepth\resources\download.jpg'
+    
+    image = Image.open(image_path)
+    print(image, 'here is the image array')
 
 
-transforms = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    # transforms.RandomVerticalFlip()
-])
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        # transforms.RandomVerticalFlip()
+    ])
 
-image_tensor = transforms(image)
-print(image_tensor.shape)  # torch.Size([3, 128, 128])
-image_tensor = transforms(image).unsqueeze(0)
-print(image_tensor) # torch.Size([b=1, c=3, h=128, w=128])
+    image_tensor = transform(image)
+    # print(image_tensor.shape)  # torch.Size([3, 128, 128])
+    image_tensor = transform(image).unsqueeze(0)
+    # print(image_tensor) # torch.Size([b=1, c=3, h=128, w=128])
 
-# this is only for image representation
-'''
-    transformed_image = image_tensor.permute(1, 2, 0)
-    transformed_image = transformed_image.numpy()
-    transformed_image = transformed_image.clip(0, 1)
+    # this is only for image representation
+    '''
+        transformed_image = image_tensor.permute(1, 2, 0)
+        transformed_image = transformed_image.numpy()
+        transformed_image = transformed_image.clip(0, 1)
 
 
-    # Plot the image using matplotlib
-    plt.imshow(transformed_image)
-    plt.axis('off')  # Turn off the axis
-    plt.show()
-'''
-# Show the image
-'''
-    plt.imshow(image)
-    plt.title("Loaded Image")
-    plt.axis("off")
-    plt.show()
+        # Plot the image using matplotlib
+        plt.imshow(transformed_image)
+        plt.axis('off')  # Turn off the axis
+        plt.show()
+    '''
+    # Show the image
+    '''
+        plt.imshow(image)
+        plt.title("Loaded Image")
+        plt.axis("off")
+        plt.show()
 
-    print(f"Image Tensor Shape: {image_tensor.shape}")  # Should be [1, 3, 128, 128]
-'''
+        print(f"Image Tensor Shape: {image_tensor.shape}")  # Should be [1, 3, 128, 128]
+    '''
+    
+    return  image_tensor
 
 def visualization_each_layer_output(tensor, title = 'image'):
     image = tensor.squeeze(0).permute(1, 2, 0).numpy()
@@ -154,19 +157,29 @@ class SimpleCNN(nn.Module):
         # feature_maps is a tensor of shape [batch_size, num_channels, height, width]
         
         num_channels = feature_map.shape[1]
-        fig, axes = plt.subplots(1, num_channels, figsize =(num_channels * 2, 2))
+        num_cols = min(num_channels, 10)
+        num_rows = (num_channels + 9) // 10
+        
+        fig, axes = plt.subplots(num_rows, num_cols, figsize =(num_channels * 2, 2))
+        axes = axes.flatten() if num_rows > 1 else [axes]
+        
         for i in range(num_channels):
             axes[i].imshow(feature_map[0, i].detach().cpu().numpy(), cmap='gray')
             axes[i].axis('off')
+            
+        for j in range(num_channels, num_rows * num_cols):
+            axes[j].axis('off')
+            
         plt.suptitle(title)
         plt.show()
     
 # TODO 3: Train the model
 def train(image_tensor):
     model = SimpleCNN()
-    target = torch.tensor([1])   # class 1
+    target = torch.tensor([1])
+    target = target.view(-1, 1).float()  # class 1
     # Loss function (CrossEntropyLoss) and Optimizer (Adam)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.BCEWithLogitsLoss()
     optimizer = torch.optim.Adam(
         model.parameters(),
         lr=0.001
@@ -195,4 +208,10 @@ def train(image_tensor):
 
 
 if __name__=="__main__":
+    
+    image_path = r'E:\ML-Bootcamp-Practical\CNNs Indepth\resources\IMG_4117.JPG'
+    
+    image_tensor = image_preprocessing(image_path)
+    print(image_tensor)
+    
     train(image_tensor)
